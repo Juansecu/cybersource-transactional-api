@@ -1,9 +1,12 @@
+/* --- Third-party libraries --- */
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+/* --- Controllers --- */
 import { AppController } from './app.controller';
 
+/* --- Services --- */
 import { AppService } from './app.service';
 
 @Module({
