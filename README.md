@@ -28,6 +28,7 @@ A RESTful API for sending and receiving payment transactions.
 - ### Environment Variables
 
   - **DATABASE_NAME** - The name of the database to use.
+  - **JWT_SECRET** - The secret used to sign and verify JWT tokens.
 
 ## Installation
 
@@ -60,3 +61,9 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Endpoints
+
+- ### /users
+  - **/login** - POST - Authenticate a user.
+  - **/register** - POST - Register a new user.

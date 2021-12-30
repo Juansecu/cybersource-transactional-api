@@ -60,4 +60,13 @@ describe('UsersService', () => {
     expect(newUserCreate.success).toBe(true);
     expect(newUserCreate.message).toBe('User created successfully');
   });
+
+  it('#validatePassword should validate a password', async () => {
+    expect(
+      await usersService.validatePassword(
+        'password',
+        '$2b$10$ibZnSKNuxG//5eZkFBKoUudx76QZkQOFrGeiAJqQvoI.HYejjCThS'
+      )
+    ).toBe(true);
+  });
 });
