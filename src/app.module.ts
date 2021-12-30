@@ -3,6 +3,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+/* --- Modules --- */
+import { UsersModule } from './users/users.module';
+
 /* --- Controllers --- */
 import { AppController } from './app.controller';
 
@@ -19,7 +22,8 @@ import { AppService } from './app.service';
       migrationsRun: true,
       synchronize: true,
       type: 'sqlite'
-    })
+    }),
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService]
