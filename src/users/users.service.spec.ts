@@ -47,10 +47,15 @@ describe('UsersService', () => {
 
   it('#register should register a new user', async () => {
     const newUserReqDto: NewUserReqDto = {
+      address1: '123 Main St',
+      administrativeArea: 'CA',
+      country: 'US',
       email: 'murphsey@gmail.com',
       firstName: 'Murph',
       lastName: 'Hershey',
-      password: 'password'
+      locality: 'San Francisco',
+      password: 'password',
+      postalCode: '94105'
     };
     const newUserCreate: MessageResDto = await usersService.register(
       newUserReqDto

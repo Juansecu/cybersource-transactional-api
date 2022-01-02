@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 /* --- Entities --- */
 import { UserEntity } from './entities/user.entity';
+
+/* --- Repository factories --- */
 import { usersEntityRepositoryFactory } from './repositories/entity-repositories/users.entity-repository';
 
 /* --- Controllers --- */

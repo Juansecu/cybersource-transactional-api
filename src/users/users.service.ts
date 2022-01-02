@@ -85,9 +85,7 @@ export class UsersService {
     try {
       const hashedPassword: string = await hash(newUserReqDto.password, 10);
       const newUser: UserEntity = this._USERS_REPOSITORY.create({
-        email: newUserReqDto.email,
-        firstName: newUserReqDto.firstName,
-        lastName: newUserReqDto.lastName,
+        ...newUserReqDto,
         password: hashedPassword
       });
 
@@ -95,6 +93,7 @@ export class UsersService {
 
       return new MessageResDto(true, 'User created successfully');
     } catch (error) {
+      console.log(error);
       throw new InternalServerErrorException(
         new MessageResDto(false, 'Internal server error')
       );
