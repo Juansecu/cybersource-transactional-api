@@ -22,7 +22,7 @@ import { AppService } from './app.service';
     TypeOrmModule.forRoot({
       database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/entities/*.entity.{ts,js}'],
-      migrations: [__dirname + '/**/migrations/*.{ts,js}'],
+      migrations: [__dirname + '/**/migrations/*.migration.{ts,js}'],
       migrationsRun: true,
       synchronize: true,
       type: 'sqlite'
