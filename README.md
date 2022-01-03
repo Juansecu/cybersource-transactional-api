@@ -27,6 +27,9 @@ A RESTful API for sending and receiving payment transactions.
 
 - ### Environment Variables
 
+  Needs the following environment variables:
+
+  - **CRYPTO_SECRET_KEY**: The key used to encrypt and decrypt the data.
   - **DATABASE_NAME** - The name of the database to use.
   - **JWT_SECRET** - The secret used to sign and verify JWT tokens.
 

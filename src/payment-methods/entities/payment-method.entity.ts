@@ -16,13 +16,13 @@ export class PaymentMethodEntity {
   paymentMethodId: string;
   @Column('varchar', { length: 50, name: 'Card_holder', nullable: false })
   cardHolder: string;
-  @Column('varchar', { length: 16, name: 'Card_number', nullable: false })
+  @Column('varchar', { length: 24, name: 'Card_number', nullable: false })
   cardNumber: string;
-  @Column('varchar', { length: 3, name: 'Cvv', nullable: false })
+  @Column('varchar', { length: 4, name: 'Cvv', nullable: false })
   securityCode: string;
   @Column('varchar', { length: 4, name: 'Expiration_month', nullable: false })
   expirationMonth: string;
-  @Column('varchar', { length: 4, name: 'Expiration_year', nullable: false })
+  @Column('varchar', { length: 8, name: 'Expiration_year', nullable: false })
   expirationYear: string;
   @JoinColumn({ name: 'User_id', referencedColumnName: 'userId' })
   @OneToOne(() => UserEntity, (user: UserEntity) => user.userId, {

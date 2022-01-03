@@ -1,8 +1,9 @@
 /* --- Third-party libraries --- */
-import { Controller, Get, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 
 /* --- DTOs --- */
+import { NewPaymentMethodReqDto } from './dtos/requests/new-payment-method.req-dto';
 import { MessageResDto } from '../shared/dtos/responses/message.res-dto';
 
 /* --- Services --- */
@@ -13,6 +14,24 @@ export class PaymentMethodsController {
   constructor(
     private readonly _PAYMENT_METHODS_SERVICE: PaymentMethodsService
   ) {}
+
+  /**
+   * Add a payment method to a user.
+   *
+   * @param newPaymentMethodReqDto Payment method to add
+   * @param request Request object
+   * @returns `Promise<MessageResDto>`
+   */
+  @Post('add-payment-method')
+  async addPaymentMethod(
+    @Body() newPaymentMethodReqDto: NewPaymentMethodReqDto,
+    @Req() request: Request
+  ): Promise<MessageResDto> {
+    return await this._PAYMENT_METHODS_SERVICE.addPaymentMethod(
+      newPaymentMethodReqDto,
+      (request as any).user.userId
+    );
+  }
 
   /**
    * Get user's payment method.

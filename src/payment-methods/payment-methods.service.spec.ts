@@ -2,6 +2,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
+/* --- DTOs --- */
+import { NewPaymentMethodReqDto } from './dtos/requests/new-payment-method.req-dto';
+
 /* --- Entities --- */
 import { PaymentMethodEntity } from './entities/payment-method.entity';
 
@@ -40,6 +43,22 @@ describe('PaymentMethodsService', () => {
 
   it('paymentMethodsService should be defined', () => {
     expect(paymentMethodsService).toBeDefined();
+  });
+
+  it('#addPaymentMethod should add a payment method to a user', async () => {
+    const newPaymentMethodReqDto: NewPaymentMethodReqDto = {
+      cardHolder: 'John Doe',
+      cardNumber: '1234567890123456',
+      securityCode: '123',
+      expirationMonth: '12',
+      expirationYear: '2030'
+    };
+    const paymentMethod = await paymentMethodsService.addPaymentMethod(
+      newPaymentMethodReqDto,
+      'c947bac5-da2b-4654-ab31-9b166c58a88d'
+    );
+
+    expect(paymentMethod).toBeDefined();
   });
 
   it('#getPaymentMethodByUserId should return a payment method', async () => {
