@@ -19,6 +19,11 @@ A RESTful API for sending and receiving payment transactions.
   - @nestjs/core
   - @nestjs/platform-express
   - @nestjs/typeorm
+  - bcrypt
+  - class-transformer
+  - class-validator
+  - crypto
+  - jsonwebtoken
   - reflect-metadata
   - rimraf
   - rxjs
