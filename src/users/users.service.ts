@@ -28,7 +28,6 @@ export class UsersService {
   /**
    * Authenticate a user.
    *
-   * @api `POST` /users/login
    * @param {UserLoginReqDto} userLoginReqDto New user data
    * @returns `Promise<MessageResDto>`
    * @throws `ConflictException`
@@ -76,7 +75,6 @@ export class UsersService {
   /**
    * Register a new user.
    *
-   * @api `POST` /users/register
    * @param {NewUserReqDto} newUserDto New user data
    * @returns `Promise<MessageResDto>`
    * @throws `InternalServerErrorException`

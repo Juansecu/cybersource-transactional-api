@@ -18,7 +18,7 @@ export class UsersController {
    *
    * @api `POST` /users/login
    * @param {UserLoginReqDto} userLoginReqDto New user data
-   * @returns Promise<MessageResDto>
+   * @returns `Promise<MessageResDto>`
    */
   @Post('login')
   async login(
@@ -32,7 +32,7 @@ export class UsersController {
    *
    * @api `POST` /users/register
    * @param {NewUserReqDto} newUserReqDto New user data.
-   * @returns Promise<UserEntity>
+   * @returns `Promise<UserEntity>`
    */
   @Post('register')
   async register(@Body() newUserReqDto: NewUserReqDto): Promise<MessageResDto> {
