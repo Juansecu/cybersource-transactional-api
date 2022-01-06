@@ -1,5 +1,6 @@
 {
   "arrowParens": "avoid",
+  "printWidth": 95,
   "singleQuote": true,
   "trailingComma": "none"
 }
