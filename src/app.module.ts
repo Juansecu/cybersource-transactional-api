@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 /* --- Modules --- */
 import { PaymentMethodsModule } from './payment-methods/payment-methods.module';
+import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 
 /* --- Middlewares --- */
@@ -28,6 +29,7 @@ import { AppService } from './app.service';
       type: 'sqlite'
     }),
     PaymentMethodsModule,
+    ProductsModule,
     UsersModule
   ],
   controllers: [AppController],
