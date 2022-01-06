@@ -34,7 +34,7 @@ A RESTful API for sending and receiving payment transactions.
 
   Needs the following environment variables:
 
-  - **CRYPTO_SECRET_KEY**: The key used to encrypt and decrypt the data.
+  - **CRYPTO_SECRET_KEY** - The key used to encrypt and decrypt the data.
   - **DATABASE_NAME** - The name of the database to use.
   - **JWT_SECRET** - The secret used to sign and verify JWT tokens.
 
@@ -75,3 +75,7 @@ $ npm run test:cov
 - ### /users
   - **/login** - POST - Authenticate a user.
   - **/register** - POST - Register a new user.
+
+## Default data
+
+Default data is inserted into the database when the application starts by the first time. For more information, see the `.migration.ts` files inside the `src/**/migrations` folders.
