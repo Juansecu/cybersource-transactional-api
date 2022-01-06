@@ -17,6 +17,13 @@ export class UserEntity {
   })
   email: string;
   @Column('varchar', {
+    length: 11,
+    name: 'Phone_number',
+    nullable: false,
+    unique: true
+  })
+  phoneNumber: string;
+  @Column('varchar', {
     length: 2,
     name: 'Country',
     nullable: false

@@ -3,12 +3,13 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 export class AddNewUsersMigration1641223460806 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(
-      `INSERT INTO Users (User_id, First_name, Last_name, Email, Country, Administrative_area, Locality, Address_1, Postal_code, Password) VALUES
+      `INSERT INTO Users (User_id, First_name, Last_name, Email, Phone_number, Country, Administrative_area, Locality, Address_1, Postal_code, Password) VALUES
       (
         '27d1556d-ebbb-4b7d-929b-d5c5471f8066',
         'Murph',
         'Hershey',
         'murphsey@gmail.com',
+        '8965432100',
         'US',
         'CA',
         'San Francisco',
@@ -21,6 +22,7 @@ export class AddNewUsersMigration1641223460806 implements MigrationInterface {
         'John',
         'Doe',
         'john.doe@gmail.com',
+        '1254367890',
         'US',
         'CA',
         'San Francisco',
@@ -33,6 +35,7 @@ export class AddNewUsersMigration1641223460806 implements MigrationInterface {
         'Jane',
         'Doe',
         'doe.jane@gmail.com',
+        '1254637890',
         'US',
         'CA',
         'San Francisco',
