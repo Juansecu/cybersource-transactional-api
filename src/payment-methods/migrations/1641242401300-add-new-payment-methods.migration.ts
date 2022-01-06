@@ -1,11 +1,9 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class AddNewPaymentMethodsMigration1641242401300
-  implements MigrationInterface
-{
+export class AddNewPaymentMethodsMigration1641242401300 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(
-      `INSERT INTO Payment_methods (Payment_method_id, Card_holder, Card_number, Cvv, Expiration_month, Expiration_year, User_id) VALUES
+      `INSERT INTO Payment_methods (Payment_method_id, Card_holder, Card_number, Cvv, Expiration_month, Expiration_year, Type, User_id) VALUES
       (
         '9d5ed243-afbc-42ca-8e0c-97ffc6e13357',
         '9GYDsYoFXngWv+1F8w==',
@@ -13,6 +11,7 @@ export class AddNewPaymentMethodsMigration1641242401300
         'KKa6',
         '6pI=',
         'WqAlUQ==',
+        '001',
         '27d1556d-ebbb-4b7d-929b-d5c5471f8066'
       ),
       (
@@ -22,6 +21,7 @@ export class AddNewPaymentMethodsMigration1641242401300
         'lDnm',
         'xtE=',
         'NdeUmA==',
+        '001',
         '69f0c4a2-da73-4885-a1ea-a8fd81411a81'
       ),
       (
@@ -31,6 +31,7 @@ export class AddNewPaymentMethodsMigration1641242401300
         'ZrG9',
         'Vn4=',
         'Yk/iuA==',
+        '001',
         'e8f8f8f8-f8f8-f8f8-f8f8-f8f8f8f8f8f8'
       )`
     );

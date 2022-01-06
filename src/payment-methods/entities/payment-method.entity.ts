@@ -1,11 +1,8 @@
 /* --- Third-party libraries --- */
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn
-} from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+/* --- Enums --- */
+import { ECardType } from '../enums/card-type.enum';
 
 /* --- Entities --- */
 import { UserEntity } from '../../users/entities/user.entity';
@@ -24,6 +21,8 @@ export class PaymentMethodEntity {
   expirationMonth: string;
   @Column('varchar', { length: 8, name: 'Expiration_year', nullable: false })
   expirationYear: string;
+  @Column('varchar', { length: 3, name: 'Type', nullable: false })
+  type: ECardType;
   @JoinColumn({ name: 'User_id', referencedColumnName: 'userId' })
   @OneToOne(() => UserEntity, (user: UserEntity) => user.userId, {
     nullable: false,
