@@ -2,7 +2,11 @@
 
 ## Description
 
-A RESTful API for sending and receiving payment transactions.
+A RESTful API for sending and receiving payment transactions through CyberSource API.
+
+**Note:** This API makes requests to the CyberSource REST API through HTTP Signature method.
+
+<span style="color: red;">Important:</span> Do not use this API for production purposes. This API is for testing purposes only.
 
 ## Requirements
 
@@ -29,14 +33,19 @@ A RESTful API for sending and receiving payment transactions.
   - rxjs
   - sqlite3
   - typeorm
+  - uuid
 
 - ### Environment Variables
 
   Needs the following environment variables:
 
   - **CRYPTO_SECRET_KEY** - The key used to encrypt and decrypt the data.
+  - **CYBERSOURCE_HOST** - The host of the Cybersource API.
   - **DATABASE_NAME** - The name of the database to use.
   - **JWT_SECRET** - The secret used to sign and verify JWT tokens.
+  - **MERCHANT_ID** - The merchant ID used to authenticate with Cybersource.
+  - **MERCHANT_KEY_ID** - The merchant key id used to authenticate the merchant.
+  - **MERCHANT_SECRET_KEY** - The merchant secret key used to authenticate the merchant.
 
 ## Installation
 

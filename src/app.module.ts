@@ -8,14 +8,16 @@ import { PaymentMethodsModule } from './payment-methods/payment-methods.module';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 
-/* --- Middlewares --- */
-import { UserAuthenticationMiddleware } from './users/middlewares/user-authentication.middleware';
-
 /* --- Controllers --- */
 import { AppController } from './app.controller';
 
+/* --- Middlewares --- */
+import { UserAuthenticationMiddleware } from './users/middlewares/user-authentication.middleware';
+
 /* --- Services --- */
 import { AppService } from './app.service';
+import { ProductRetrievalMiddleware } from './products/middlewares/product-retrieval.middleware';
+import { PaymentMethodRetrievalMiddleware } from './payment-methods/middlewares/payment-method-retrieval.middleware';
 
 @Module({
   imports: [
@@ -37,6 +39,14 @@ import { AppService } from './app.service';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(UserAuthenticationMiddleware).forRoutes('payment-methods');
+    consumer
+      .apply(UserAuthenticationMiddleware)
+      .forRoutes('payment-methods')
+      .apply(
+        ProductRetrievalMiddleware,
+        UserAuthenticationMiddleware,
+        PaymentMethodRetrievalMiddleware
+      )
+      .forRoutes('products/buy/:productId');
   }
 }

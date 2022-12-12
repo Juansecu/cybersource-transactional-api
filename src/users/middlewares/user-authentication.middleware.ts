@@ -1,11 +1,5 @@
 /* --- Third-party libraries --- */
-import {
-  Injectable,
-  InternalServerErrorException,
-  NestMiddleware,
-  NotFoundException,
-  UnauthorizedException
-} from '@nestjs/common';
+import { Injectable, NestMiddleware } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NextFunction, Request, Response } from 'express';
 import { decode } from 'jsonwebtoken';
@@ -35,15 +29,15 @@ export class UserAuthenticationMiddleware implements NestMiddleware {
       request.headers.authorization.split(' ').length !== 2 ||
       request.headers.authorization.split(' ')[0] != 'Bearer'
     )
-      throw new UnauthorizedException(new MessageResDto(false, 'Invalid token'));
+      return response.status(401).json(new MessageResDto(false, 'Invalid token'));
 
     const token = request.headers.authorization.split(' ')[1];
     const payload = decode(token);
 
-    if (!payload) throw new UnauthorizedException(new MessageResDto(false, 'Invalid token'));
+    if (!payload) return response.status(401).json(new MessageResDto(false, 'Invalid token'));
 
     if (Date.now() >= (payload as any).exp * 1000)
-      throw new UnauthorizedException(new MessageResDto(false, 'Token expired'));
+      return response.status(401).json(new MessageResDto(false, 'Token expired'));
 
     try {
       const user: UserEntity = await this._USERS_REPOSITORY.findOne({
@@ -70,11 +64,9 @@ export class UserAuthenticationMiddleware implements NestMiddleware {
           email: user.email
         };
         next();
-      } else throw new NotFoundException(new MessageResDto(false, 'Unkown user'));
+      } else return response.status(404).json(new MessageResDto(false, 'Unkown user'));
     } catch (error) {
-      throw new InternalServerErrorException(
-        new MessageResDto(false, 'Internal server error')
-      );
+      return response.status(500).json(new MessageResDto(false, 'Internal server error'));
     }
   }
 }
